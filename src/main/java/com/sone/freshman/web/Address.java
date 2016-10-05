@@ -70,7 +70,7 @@ public class Address {
 		return "redirect:navigatoraddr";
 	}
 	@RequestMapping(value="/addrupde{id}",method = RequestMethod.GET)
-	public ModelAndView showAddrupde(@PathVariable String id) {
+	public ModelAndView showAddrupde(@PathVariable int id) {
 		ModelAndView view=new ModelAndView("vAddressupde");
 		AddressVO vo=null;
 		try {

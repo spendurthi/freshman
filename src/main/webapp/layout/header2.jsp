@@ -13,6 +13,8 @@
 	</div>
 </c:if>
 </td>
+</tr>
+<tr>
 <td><a href="navigatororg" >ORG</a></td>
 <td><a href="navigatoraddr" >Address</a></td>
 </tr>

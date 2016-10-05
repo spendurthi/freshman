@@ -9,5 +9,5 @@ public interface AddressManager {
 	List<AddressVO> getList()throws SoneWebException;
 	Messages save(AddressVO vo)throws SoneWebException;
 	Messages update(AddressVO vo)throws SoneWebException;
-	AddressVO get(String id)throws SoneWebException;
+	AddressVO get(int id)throws SoneWebException;
 }

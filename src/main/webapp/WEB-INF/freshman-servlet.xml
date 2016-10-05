@@ -41,8 +41,8 @@ http://www.springframework.org/schema/mvc http://www.springframework.org/schema/
  
   <bean id="mc" class="com.sone.freshman.utils.MessageCenter" />
   
- <bean id="userDao" class="com.standone.hbr.dao.impl.UsersDaoImpl" />
- <bean id="adrsDao" class="com.standone.hbr.dao.impl.AddressDaoImpl" />
+ <bean id="userDao" class="com.sone.dao.impl.UserDaoImpl" />
+ <bean id="adrsDao" class="com.sone.dao.impl.AddressDaoImpl" />
  
  <bean id="loginMgr" class="com.sone.freshman.bu.impl.LoginManagerImpl" />
  <bean id="adrgMgr" class="com.sone.freshman.bu.impl.AddressManagerImpl" />

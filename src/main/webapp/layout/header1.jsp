@@ -6,4 +6,5 @@
 <script src="<c:url value="/resources/js/sone.js" />"></script>
 </head>
 </html>
-<h2>Freshman</h2>
+<h2></h2>
+<a href="<% request.getContextPath(); %>">Freshman</a>

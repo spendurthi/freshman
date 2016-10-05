@@ -25,6 +25,7 @@
 		<artifactId>javax.inject</artifactId>
 		<version>1</version>
 	</dependency>
+	<!-- https://mvnrepository.com/artifact/org.springframework/spring-beans -->
 	
     <dependency>
       <groupId>junit</groupId>

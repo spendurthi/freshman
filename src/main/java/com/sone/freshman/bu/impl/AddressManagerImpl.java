@@ -5,12 +5,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.sone.dao.AddressDao;
+import com.sone.exceptions.SoneDataException;
 import com.sone.freshman.bu.AddressManager;
+import com.sone.freshman.dto.AddressDTO;
 import com.sone.freshman.utils.Messages;
 import com.sone.freshman.vo.AddressVO;
-import com.standone.exceptions.SoneDataException;
-import com.standone.hbr.dao.AddressDao;
-import com.standone.hbr.vo.AddressDTO;
 public class AddressManagerImpl implements AddressManager{
 	
 	@Autowired AddressDao dao;	
@@ -33,7 +33,7 @@ public class AddressManagerImpl implements AddressManager{
 		Messages rtn=new Messages();
 		toDTO(vo, dto);
 		try {
-			com.standone.hbr.util.Messages msg=dao.save(dto);
+			Messages msg=dao.save(dto);
 			rtn.setMessageType(msg.getMessageType());
 			for(String m:msg){
 				rtn.add(m);
@@ -51,11 +51,11 @@ public class AddressManagerImpl implements AddressManager{
 		Messages rtn=new Messages();
 		toDTO(vo, dto);
 		try {
-			com.standone.hbr.util.Messages msg=dao.update(dto);
+			Messages msg=dao.update(dto);
 			rtn.setMessageType(msg.getMessageType());
-			for(String m:msg){
-				rtn.add(m);
-			}
+			for(int i=0;i<msg.size();i++){
+				rtn.add(msg.get(i));
+			}			
 		} catch (SoneDataException e) {
 			e.printStackTrace();
 			rtn.setMessageType("EXCEP");
@@ -64,7 +64,7 @@ public class AddressManagerImpl implements AddressManager{
 		return rtn;
 	}
 	@Override
-	public AddressVO get(String id) {
+	public AddressVO get(int id) {
 		AddressVO vo=new AddressVO();
 		AddressDTO dto=null;
 		try {
