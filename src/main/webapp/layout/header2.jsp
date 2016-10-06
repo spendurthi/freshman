@@ -14,9 +14,12 @@
 </c:if>
 </td>
 </tr>
+</table>
+<table>
 <tr>
-<td><a href="navigatororg" >ORG</a></td>
-<td><a href="navigatoraddr" >Address</a></td>
+<td class='all25'><a class="button" href="navigatororg" >Organization</a></td>
+<td><a href="navigatororg" ></a></td>
+<td class='all25'><a class="button"href="navigatoraddr" >Address</a></td>
 </tr>
 </table>
 </body>

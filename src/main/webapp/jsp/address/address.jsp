@@ -9,7 +9,7 @@
 <form:form method="POST" action="dAddressAdd" modelAttribute="address">
 <form:errors path="*" cssClass="red" />
  <div id="errorDiv"></div> 		  
-   <table>
+   <table id="box-table-a" width="400px;">
     <tr>
         <td><form:label path="id"><fmt:message key="id" /> :</form:label></td>
         <td><form:input path="id" cssClass="required"/></td>
@@ -63,8 +63,7 @@
         <td><form:input path="fax" /></td>
     </tr>
     <tr>
-    	<td></td>
-        <td style="float:right;">
+        <td align="center" colspan="2">
             <input type="submit" value="Submit" class="loginActions11" />
         </td>
     </tr>
