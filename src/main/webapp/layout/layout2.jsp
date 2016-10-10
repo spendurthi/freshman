@@ -3,9 +3,6 @@
 <html>
 <head>
 <title><tiles:insertAttribute name="title" ignore="true" /></title>
-<script src="<c:url value="/resources/js/jquery-1.7.2.js" />"></script>
-<script src="<c:url value="/resources/js/jquery.ui.core.js" />"></script>
-<script src="<c:url value="/resources/js/sone.js" />"></script>
 <link rel="stylesheet" href="<c:url value='/resources/css/main.css'/>">
 </head>
 <body>

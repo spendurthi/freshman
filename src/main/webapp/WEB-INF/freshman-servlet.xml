@@ -46,5 +46,6 @@ http://www.springframework.org/schema/mvc http://www.springframework.org/schema/
  
  <bean id="loginMgr" class="com.sone.freshman.bu.impl.LoginManagerImpl" />
  <bean id="adrgMgr" class="com.sone.freshman.bu.impl.AddressManagerImpl" />
+ <bean id="userService" class="com.sone.freshman.bu.impl.UserServiceImpl" />
  
 </beans>

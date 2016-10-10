@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<form:form method="POST" action="dAddressAdd" modelAttribute="address">
+<form:form method="POST" action="/freshman/address/add" modelAttribute="address">
 <form:errors path="*" cssClass="red" />
  <div id="errorDiv"></div> 		  
    <table id="box-table-a" width="400px;">

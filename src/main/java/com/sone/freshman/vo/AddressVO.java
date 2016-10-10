@@ -93,4 +93,8 @@ public class AddressVO {
 	public void setFax(String fax) {
 		this.fax = fax;
 	}
+	public AddressVO(int id){
+		this.id = id;
+	}
+	public AddressVO(){}
 }

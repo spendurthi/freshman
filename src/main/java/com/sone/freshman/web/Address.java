@@ -25,9 +25,9 @@ public class Address {
 	public void setAddressMgr(AddressManager addressMgr) {
 		this.addressMgr = addressMgr;
 	}
-	@RequestMapping(value="/navigatoraddr",method = RequestMethod.GET)
-	public ModelAndView showAddress() {
-		ModelAndView view=new ModelAndView("addressList");
+	@RequestMapping(value="/address",method = RequestMethod.GET)
+	public ModelAndView read() {
+		ModelAndView view=new ModelAndView("address");
 		List<AddressVO> voList=null;
 		try {
 			voList = addressMgr.getList();
@@ -37,7 +37,7 @@ public class Address {
 		view.addObject("listOfAddress", voList);
 		return view;
 	}
-	@RequestMapping(value="/dAddressAdd",method = RequestMethod.POST)
+	@RequestMapping(value="/address/add",method = RequestMethod.POST)
 	public String save(@Validated @ModelAttribute("address") AddressVO vo,BindingResult  errors,HttpServletRequest req) {
 		Messages msg=null;
 		try {
@@ -46,14 +46,26 @@ public class Address {
 			e.printStackTrace();
 		}
 		if (msg.getMessageType().equals("INFO")){
-			return "redirect:navigatoraddr";
+			return "redirect:/address";
 		}else{
 			ObjectError err=new ObjectError("",msg.get(0));
 			errors.addError(err);
 		}
-		return "redirect:navigatoraddr";
+		return "redirect:/address";
 	}
-	@RequestMapping(value="/dAddressUpdate",method = RequestMethod.POST)
+	@RequestMapping(value="/address/add",method = RequestMethod.GET)
+	public ModelAndView save() {
+		ModelAndView view=new ModelAndView("address/add");
+		AddressVO vo=null;
+		try {
+			vo = new AddressVO(addressMgr.getMaxId()+1);
+		} catch (SoneWebException e) {
+			e.printStackTrace();
+		}
+		view.addObject("address", vo);
+		return view;
+	}
+	@RequestMapping(value="/address/update",method = RequestMethod.POST)
 	public String update(@Validated @ModelAttribute("address") AddressVO vo,BindingResult  errors,HttpServletRequest req) {
 		Messages msg=null;
 		try {
@@ -62,16 +74,16 @@ public class Address {
 			e.printStackTrace();
 		}
 		if (msg.getMessageType().equals("INFO")){
-			return "redirect:navigatoraddr";
+			return "redirect:/address";
 		}else{
 			ObjectError err=new ObjectError("",msg.get(0));
 			errors.addError(err);
 		}
-		return "redirect:navigatoraddr";
+		return "redirect:/address";
 	}
-	@RequestMapping(value="/addrupde{id}",method = RequestMethod.GET)
-	public ModelAndView showAddrupde(@PathVariable int id) {
-		ModelAndView view=new ModelAndView("vAddressupde");
+	@RequestMapping(value="/address/update{id}",method = RequestMethod.GET)
+	public ModelAndView update(@PathVariable int id) {
+		ModelAndView view=new ModelAndView("address/update");
 		AddressVO vo=null;
 		try {
 			vo=addressMgr.get(id);

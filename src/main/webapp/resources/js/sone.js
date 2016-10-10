@@ -241,4 +241,15 @@ function removEerrMsg() {
 	$('#errorDivValues').remove();
 	$('#errorDiv').empty();	
 }
-
+function contextRootName(){
+	
+    var protocol = window.location.protocol;
+	var host = window.location.host;
+	var root = window.location.pathname.split("/");
+	var appRoot = "";
+	if(root.length > 2) {
+		appRoot = root[1];
+	}
+    
+    return appRoot;
+}

@@ -27,7 +27,7 @@
 </thead>
 <c:forEach items = "${listOfAddress}" var="add">
 <tr>
-	<td><a href="addrupde${add.id}"><c:out value="${add.id}"/></a></td>
+	<td><a href="address/update${add.id}"><c:out value="${add.id}"/></a></td>
 	<td><c:out value="${add.street}"/></td>
 	<td><c:out value="${add.suiteApt}"/></td>
 	<td><c:out value="${add.city}"/></td>
@@ -43,7 +43,7 @@
 </table>
 <table>
 <tr>
-<td><a href="navigatoraddrAdd" >Add</a></td>
+<td><a href="address/add/" >Add</a></td>
 </tr>
 </table>
 </body>

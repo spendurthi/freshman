@@ -22,8 +22,7 @@ public class Database {
 		int idx = address.indexOf(finder);
 		finder = null;
 		if (idx>=0){
-			AddressDTO toUpdate=address.get(idx);
-			toUpdate.setStreet(dto.getStreet());
+			address.set(idx, dto);
 		}
 	}
 	public static AddressDTO getAddress(int id){
@@ -47,7 +46,7 @@ public class Database {
 		int idx = users.indexOf(finder);
 		finder = null;
 		if (idx>=0){
-			users.add(dto);
+			users.set(idx,dto);
 		}
 	}
 	public static UserDTO getUser(String userName){

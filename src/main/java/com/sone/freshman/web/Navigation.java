@@ -18,5 +18,9 @@ public class Navigation {
 	public String showAddressAdd(@ModelAttribute("address") AddressVO address) {
 		return "vAddressAdd";
 	}
+	@RequestMapping(value="/users",method = RequestMethod.GET)
+	public String showUser() {
+		return "user/list";
+	}
 	
 }

@@ -33,7 +33,7 @@ public class Login implements Validator{
 	public String showLogin(@ModelAttribute("login") UserVO login) {
 		return "login";
 	}
-	@RequestMapping(value="process",method = RequestMethod.GET)
+	@RequestMapping(value="/validateUser",method = RequestMethod.GET)
 	public String processForm(HttpServletRequest request, HttpServletResponse response,@ModelAttribute("login") UserVO login) {
 		HttpSession sess=request.getSession(false);
 		if (sess!=null){
@@ -41,7 +41,7 @@ public class Login implements Validator{
 		}
 		return "redirect:login";
 	}
-	@RequestMapping(value="process",method = RequestMethod.POST)
+	@RequestMapping(value="validateUser",method = RequestMethod.POST)
 	public ModelAndView processForm(@Validated @ModelAttribute("login") UserVO vo,BindingResult  errors,HttpServletRequest req) throws SoneWebException{		
 		ModelAndView view=new ModelAndView("login");
 		boolean result=false;

@@ -10,4 +10,5 @@ public interface AddressManager {
 	Messages save(AddressVO vo)throws SoneWebException;
 	Messages update(AddressVO vo)throws SoneWebException;
 	AddressVO get(int id)throws SoneWebException;
+	int getMaxId()throws SoneWebException;
 }

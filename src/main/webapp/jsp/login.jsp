@@ -6,13 +6,13 @@
 </head>
 <body>
 
-<form:form method="POST" action="process" modelAttribute="login">
+<form:form method="POST" action="validateUser" modelAttribute="login">
 <form:errors path="*" cssClass="red" />
  <div id="errorDiv"></div> 		  
-   <table>
+   <table class="top25">
     <tr>
         <td><form:label path="userName"><fmt:message key="username" /> :</form:label></td>
-        <td><form:input path="userName" cssClass="required"/></td>
+        <td><form:input path="userName" cssClass="required" class="input-sm"/></td>
     </tr>
     <tr>
         <td><form:label path="password"><fmt:message key="password" /> :</form:label></td>
@@ -21,7 +21,7 @@
     <tr>
     	<td></td>
         <td style="float:right;">
-            <input type="submit" value="Submit" class="loginActions11" />
+            <input type="submit" value="Submit" class="btn btn-success custom-width" />
         </td>
     </tr>
 </table>

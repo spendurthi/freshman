@@ -115,4 +115,8 @@ public class AddressManagerImpl implements AddressManager{
 			}
 		}
 	}
+	int patternStart=100;
+	public int getMaxId(){
+		return patternStart+this.getList().size();
+	}
 }

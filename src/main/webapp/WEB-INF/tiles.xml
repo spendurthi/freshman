@@ -37,16 +37,19 @@
 	<put-attribute name="body" value="/jsp/org.jsp" />
 </definition>
 
-<definition name="addressList" extends="baseLayout2">
+<definition name="address" extends="baseLayout2">
 	<put-attribute name="body" value="/jsp/address/addressList.jsp" />
 </definition>
 
-<definition name="vAddressAdd" extends="baseLayout2">
+<definition name="address/add" extends="baseLayout2">
 	<put-attribute name="body" value="/jsp/address/address.jsp" />
 </definition>
 
-<definition name="vAddressupde" extends="baseLayout2">
+<definition name="address/update" extends="baseLayout2">
 	<put-attribute name="body" value="/jsp/address/viewAddress.jsp" />
+</definition>
+<definition name="user/list" extends="baseLayout2">
+	<put-attribute name="body" value="/jsp/users.jsp" />
 </definition>
   
 </tiles-definitions>
