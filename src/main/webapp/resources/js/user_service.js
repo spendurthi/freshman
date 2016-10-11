@@ -8,14 +8,16 @@ angular.module('myApp').factory('UserService', ['$http', '$q', function($http, $
         fetchAllUsers: fetchAllUsers,
         createUser: createUser,
         updateUser:updateUser,
-        deleteUser:deleteUser
+        deleteUser:deleteUser,
+        search:search,
+        getUser:getUser
     };
 
     return factory;
 
     function fetchAllUsers() {
         var deferred = $q.defer();
-        $http.get(REST_SERVICE_URI)
+        $http.get(REST_SERVICE_URI+'?'+ Math.random())
             .then(
             function (response) {
                 deferred.resolve(response.data);
@@ -73,5 +75,34 @@ angular.module('myApp').factory('UserService', ['$http', '$q', function($http, $
         );
         return deferred.promise;
     }
-
+    function search(userName) {
+        var deferred = $q.defer();
+        console.log('userName '+userName);
+        $http.get(REST_SERVICE_URI+"search"+userName+"/"+'?'+ Math.random())
+            .then(
+            function (response) {
+                deferred.resolve(response.data);
+            },
+            function(errResponse){
+                console.error('Error while fetching Users');
+                deferred.reject(errResponse);
+            }
+        );
+        return deferred.promise;
+    }
+    function getUser(id) {
+        var deferred = $q.defer();
+        console.log('user ID '+id);
+        $http.get(REST_SERVICE_URI+id+"/"+'?'+ Math.random())
+            .then(
+            function (response) {
+            	deferred.resolve(response.data);
+            },
+            function(errResponse){
+                console.error('Error while fetching Users');
+                deferred.reject(errResponse);
+            }
+        );
+        return deferred.promise;
+    }
 }]);

@@ -20,7 +20,8 @@ public interface UserService {
 	
 	void deleteUserById(long id);
 
-	List<UserVO> findAllUsers(); 
+	List<UserVO> findAllUsers();
+	List<UserVO> search(String srch);
 	
 	void deleteAllUsers();
 	

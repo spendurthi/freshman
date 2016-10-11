@@ -30,8 +30,27 @@ public class Login implements Validator{
 	@Autowired private MessageCenter mc;
 	
 	@RequestMapping(value="/login",method = RequestMethod.GET)
-	public String showLogin(@ModelAttribute("login") UserVO login) {
-		return "login";
+	public ModelAndView showLogin(HttpServletRequest request,@ModelAttribute("login") UserVO login) {
+		ModelAndView view=new ModelAndView("login");
+		HttpSession sess=request.getSession(false);
+		if (sess!=null){
+			UserVO loginSess = (UserVO)sess.getAttribute("login");
+			if (loginSess!=null){
+				try {
+					boolean result=loginMgr.validateUser(loginSess);
+					if (result){
+						Messages msg=new Messages();
+						msg.add("Welcome to "+loginSess.getUserName());
+						request.setAttribute("userDtls", msg);	
+						view.setViewName("mainDoor");
+					}
+				} catch (SoneWebException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		return view;
 	}
 	@RequestMapping(value="/validateUser",method = RequestMethod.GET)
 	public String processForm(HttpServletRequest request, HttpServletResponse response,@ModelAttribute("login") UserVO login) {
@@ -50,7 +69,8 @@ public class Login implements Validator{
 		try {
 			if (result){
 				result=loginMgr.validateUser(vo);
-				if (result){					
+				if (result){	
+					req.getSession().setAttribute("login", vo);
 					Messages msg=new Messages();
 					msg.add("Welcome "+vo.getUserName());
 					req.setAttribute("userDtls", msg);

@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
   <head>  
-    <title>AngularJS $http Example</title>  
+    <title>Users</title>  
     <style>
       .username.ng-valid {
           background-color: lightgreen;
@@ -33,6 +33,7 @@
               <div class="panel-heading"><span class="lead">User Registration Form </span></div>
               <div class="formcontainer">
                   <form ng-submit="ctrl.submit()" name="myForm" class="form-horizontal">
+                      <input type="hidden" name="uid" id="uid" ng-model="ctrl.uid" ng-init="uid = <%= request.getAttribute("userId") %> " ng-value="<%= request.getAttribute("userId") %>" />
                       <input type="hidden" ng-model="ctrl.user.id" />
                       <div class="row">
                           <div class="form-group col-md-12">
@@ -70,6 +71,15 @@
                               </div>
                           </div>
                       </div>
+                      
+                      <div class="row">
+                          <div class="form-group col-md-12">
+                              <label class="col-md-2 control-lable" for="file">Search</label>
+                              <div class="col-md-7">
+                                  <input type="text" ng-model="ctrl.user.srch" name="srch" class="form-control input-sm" placeholder="Enter user name" ng-change="ctrl.searchUsers()" />
+                              </div>
+                          </div>
+                      </div>    
 
                       <div class="row">
                           <div class="form-actions floatRight">
@@ -110,8 +120,8 @@
           </div>
       </div>
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
-      <script src="<c:url value='/resources/js/app.js' />"></script>
-      <script src="<c:url value='/resources/js/user_controller.js' />"></script>
-      <script src="<c:url value='/resources/js/user_service.js' />"></script>      
+      <script src="<c:url value='/resources/js/app.js' />?r=<%=session.getId() %>>"></script>
+      <script src="<c:url value='/resources/js/user_controller.js' />?r=<%=session.getId() %>>"></script>
+      <script src="<c:url value='/resources/js/user_service.js' />?r=<%=session.getId() %>>"></script>     
   </body>
 </html>

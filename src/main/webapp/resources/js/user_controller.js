@@ -1,6 +1,6 @@
 'use strict';
 var App = angular.module('myApp',[])
-	.controller('UserController', ['$scope', 'UserService', function($scope, UserService) {
+	.controller('UserController', ['$scope','UserService','$location', function($scope,UserService,$location) {
     var self = this;
     self.user={id:null,userName:'',address:'',email:''};
     self.users=[];
@@ -9,15 +9,43 @@ var App = angular.module('myApp',[])
     self.edit = edit;
     self.remove = remove;
     self.reset = reset;
-
-
+    self.searchUsers = searchUsers;
+    // Below code is to read value after DOM ready since angular jas issue with hidden fields access in controllers.
+    /*
+    angular.element(document).ready(function () {
+    	userID=document.getElementById('uid').value;
+    	if (userID!=''){
+    		findUser(userID);
+    	}else{
+    		fetchAllUsers();
+    	}    	
+    });
+	*/
+	
+	
     fetchAllUsers();
-
     function fetchAllUsers(){
         UserService.fetchAllUsers()
             .then(
             function(d) {
+            	self.users = d;
+            },
+            function(errResponse){
+                console.error('Error while fetching Users');
+            }
+        );
+    }
+    
+    function findUser(id){
+        UserService.getUser(id)
+            .then(
+            function(d) {
                 self.users = d;
+                for(var i = 0; i < self.users.length; i++){
+                    if(self.users[i].id === id) {
+                        alert(self.users[i].id);
+                    }
+                }
             },
             function(errResponse){
                 console.error('Error while fetching Users');
@@ -88,6 +116,18 @@ var App = angular.module('myApp',[])
     function reset(){
         self.user={id:null,userName:'',address:'',email:''};
         $scope.myForm.$setPristine(); //reset Form
+    }
+    
+    function searchUsers(){
+        UserService.search(self.user.srch)
+            .then(
+            function(d) {
+                self.users = d;
+            },
+            function(errResponse){
+                console.error('Error while fetching Users');
+            }
+        );
     }
 
 }]);
