@@ -3,6 +3,7 @@
 	<name>freshman</name>
 	<comment></comment>
 	<projects>
+		<project>freshdb</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

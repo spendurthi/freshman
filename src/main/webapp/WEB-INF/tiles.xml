@@ -51,5 +51,11 @@
 <definition name="user/list" extends="baseLayout2">
 	<put-attribute name="body" value="/jsp/users.jsp" />
 </definition>
+
+<!-- Start Departments -->
+<definition name="dept/search" extends="baseLayout2">
+	<put-attribute name="body" value="/jsp/dept/deptSearch.jsp" />
+</definition>
+<!-- End Departments -->
   
 </tiles-definitions>

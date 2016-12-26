@@ -6,6 +6,7 @@
 <body>
 	<nav>
 		<a href="login" class="login" id="hrefLogin">Home</a>
+		<a href="dept" class="dept" id="hrefDept">Departments</a>
 		<a href="#" class="navigatoraddr" id="hrefAddress">Address</a>
 		<a href="vUser" class="user" id="hrefUser">User</a>
 	</nav>	
@@ -14,6 +15,7 @@
 		document.getElementById('hrefLogin').href = "/"+ctx + "/login";
 		document.getElementById('hrefAddress').href = "/"+ctx + "/address";
 		document.getElementById('hrefUser').href = "/"+ctx + "/users";
+		document.getElementById('hrefDept').href = "/"+ctx + "/dept/search";
 	</script>
 <table>
 <tr>
